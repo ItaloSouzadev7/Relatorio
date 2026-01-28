@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>L'IDEA HUB - Visão Executiva</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+        body { font-family: 'Inter', sans-serif; background-color: #f5f5f4; }
+        .card-hover:hover { transform: translateY(-2px); box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1); }
+    </style>
+</head>
+<body class="text-stone-800 h-screen flex flex-col overflow-hidden">
+
+    <!-- Topbar Global -->
+    <header class="h-16 bg-stone-900 text-white flex justify-between items-center px-6 shadow-md z-10 flex-shrink-0">
+        <div class="flex items-center gap-3">
+            <i data-lucide="layers" class="w-6 h-6 text-emerald-400"></i>
+            <h1 class="text-lg font-bold tracking-tight">L'IDEA CORP <span class="text-stone-500 text-xs font-normal ml-2">| SISTEMA INTEGRADO</span></h1>
+        </div>
+        <div class="text-xs text-stone-400 font-mono">AMBIENTE: PRODUÇÃO</div>
+    </header>
+
+    <div class="flex flex-1 overflow-hidden">
+        <!-- Menu Lateral (Padrão para todos os arquivos) -->
+        <aside class="w-64 bg-white border-r border-stone-200 flex flex-col flex-shrink-0">
+            <nav class="p-4 space-y-2">
+                <p class="px-2 text-xs font-bold text-stone-400 uppercase tracking-wider mb-2">Painéis</p>
+                
+                <!-- O segredo: Links relativos para arquivos na mesma pasta -->
+                <a href="./index.html" class="flex items-center gap-3 px-3 py-2 bg-stone-100 text-stone-900 font-medium rounded-lg">
+                    <i data-lucide="layout-dashboard" class="w-4 h-4"></i> Visão Geral
+                </a>
+                <a href="./contabil.html" class="flex items-center gap-3 px-3 py-2 text-stone-600 hover:bg-stone-50 rounded-lg transition-colors">
+                    <i data-lucide="calculator" class="w-4 h-4"></i> Contábil
+                </a>
+                <a href="./fiscal.html" class="flex items-center gap-3 px-3 py-2 text-stone-600 hover:bg-stone-50 rounded-lg transition-colors">
+                    <i data-lucide="receipt" class="w-4 h-4"></i> Fiscal
+                </a>
+                <a href="./dp.html" class="flex items-center gap-3 px-3 py-2 text-stone-600 hover:bg-stone-50 rounded-lg transition-colors">
+                    <i data-lucide="users" class="w-4 h-4"></i> Dep. Pessoal
+                </a>
+                <a href="./legal.html" class="flex items-center gap-3 px-3 py-2 text-stone-600 hover:bg-stone-50 rounded-lg transition-colors">
+                    <i data-lucide="scale" class="w-4 h-4"></i> Legalização
+                </a>
+            </nav>
+        </aside>
+
+        <!-- Conteúdo Principal -->
+        <main class="flex-1 overflow-y-auto p-8 bg-stone-50">
+            <header class="mb-8">
+                <h2 class="text-2xl font-bold text-stone-800">Visão Geral da Corporação</h2>
+                <p class="text-stone-500">Resumo consolidado de todos os setores.</p>
+            </header>
+
+            <!-- Grid de Resumo -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
+                <!-- Card vindo do Contábil -->
+                <div onclick="window.location.href='./contabil.html'" class="bg-white p-6 rounded-xl border border-stone-200 shadow-sm cursor-pointer transition-all card-hover group">
+                    <div class="flex justify-between items-start mb-4">
+                        <span class="text-xs font-bold text-blue-600 bg-blue-50 px-2 py-1 rounded">CONTÁBIL</span>
+                        <i data-lucide="arrow-up-right" class="w-4 h-4 text-stone-300 group-hover:text-blue-500"></i>
+                    </div>
+                    <div class="text-3xl font-bold text-stone-800" id="kpi-lucro">...</div>
+                    <div class="text-sm text-stone-500 mt-1">Lucro Operacional</div>
+                </div>
+
+                <!-- Card vindo do Fiscal -->
+                <div onclick="window.location.href='./fiscal.html'" class="bg-white p-6 rounded-xl border border-stone-200 shadow-sm cursor-pointer transition-all card-hover group">
+                    <div class="flex justify-between items-start mb-4">
+                        <span class="text-xs font-bold text-amber-600 bg-amber-50 px-2 py-1 rounded">FISCAL</span>
+                        <i data-lucide="arrow-up-right" class="w-4 h-4 text-stone-300 group-hover:text-amber-500"></i>
+                    </div>
+                    <div class="text-3xl font-bold text-stone-800" id="kpi-impostos">...</div>
+                    <div class="text-sm text-stone-500 mt-1">Carga Tributária</div>
+                </div>
+
+                <!-- Card vindo do DP -->
+                <div onclick="window.location.href='./dp.html'" class="bg-white p-6 rounded-xl border border-stone-200 shadow-sm cursor-pointer transition-all card-hover group">
+                    <div class="flex justify-between items-start mb-4">
+                        <span class="text-xs font-bold text-rose-600 bg-rose-50 px-2 py-1 rounded">PESSOAL</span>
+                        <i data-lucide="arrow-up-right" class="w-4 h-4 text-stone-300 group-hover:text-rose-500"></i>
+                    </div>
+                    <div class="text-3xl font-bold text-stone-800" id="kpi-headcount">...</div>
+                    <div class="text-sm text-stone-500 mt-1">Colaboradores Ativos</div>
+                </div>
+
+                <!-- Card vindo do Legal -->
+                <div onclick="window.location.href='./legal.html'" class="bg-white p-6 rounded-xl border border-stone-200 shadow-sm cursor-pointer transition-all card-hover group">
+                    <div class="flex justify-between items-start mb-4">
+                        <span class="text-xs font-bold text-purple-600 bg-purple-50 px-2 py-1 rounded">LEGAL</span>
+                        <i data-lucide="arrow-up-right" class="w-4 h-4 text-stone-300 group-hover:text-purple-500"></i>
+                    </div>
+                    <div class="text-sm font-bold text-emerald-600 bg-emerald-50 inline-block px-2 py-1 rounded mt-1" id="kpi-status">Regular</div>
+                    <div class="text-sm text-stone-500 mt-2">Status CNDs</div>
+                </div>
+            </div>
+
+            <!-- Área de Avisos Integrados -->
+            <div class="bg-white rounded-xl border border-stone-200 p-6 shadow-sm">
+                <h3 class="font-bold text-stone-700 mb-4 flex items-center gap-2">
+                    <i data-lucide="alert-circle" class="w-5 h-5 text-amber-500"></i>
+                    Alertas Críticos Integrados
+                </h3>
+                <div class="space-y-3">
+                    <div class="flex items-center justify-between p-3 bg-red-50 text-red-700 rounded-lg border border-red-100">
+                        <div class="flex items-center gap-3">
+                            <i data-lucide="scale" class="w-4 h-4"></i>
+                            <span class="font-medium">Sefaz Estadual: Pendência Fiscal detectada</span>
+                        </div>
+                        <a href="./legal.html" class="text-xs font-bold underline hover:text-red-900">Verificar</a>
+                    </div>
+                    <div class="flex items-center justify-between p-3 bg-blue-50 text-blue-700 rounded-lg border border-blue-100">
+                        <div class="flex items-center gap-3">
+                            <i data-lucide="calculator" class="w-4 h-4"></i>
+                            <span class="font-medium">Balanço: Estoque acima do limite de giro</span>
+                        </div>
+                        <a href="./contabil.html" class="text-xs font-bold underline hover:text-blue-900">Analisar</a>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- SCRIPT DE INTEGRAÇÃO (Simulado aqui no final) -->
+    <script>
+        // 1. Definição da "Verdade Única" (Dados)
+        const defaultData = {
+            contabil: { lucro: 15637292.45, receita: 38621924.56 },
+            fiscal: { impostos: 3438234.30 },
+            dp: { headcount: 142 },
+            legal: { status: "Regular" }
+        };
+
+        // 2. Inicialização do LocalStorage (Comunicação entre abas)
+        // Se não houver dados salvos, salva os padrão. Se houver, usa os salvos.
+        if (!localStorage.getItem('lidea_db_v1')) {
+            localStorage.setItem('lidea_db_v1', JSON.stringify(defaultData));
+        }
+
+        // 3. Ler dados
+        const db = JSON.parse(localStorage.getItem('lidea_db_v1'));
+
+        // 4. Renderizar na tela
+        function formatMoney(val) { return val.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL', maximumFractionDigits: 0 }); }
+        
+        document.getElementById('kpi-lucro').innerText = formatMoney(db.contabil.lucro);
+        document.getElementById('kpi-impostos').innerText = formatMoney(db.fiscal.impostos);
+        document.getElementById('kpi-headcount').innerText = db.dp.headcount;
+
+        // Inicializa ícones
+        lucide.createIcons();
+    </script>
+</body>
+</html>
