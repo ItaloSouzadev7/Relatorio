@@ -13,7 +13,7 @@
 </head>
 <body class="text-stone-800 h-screen flex flex-col overflow-hidden">
 
-    <!-- Topbar (Identidade Visual Consistente) -->
+    <!-- Topbar -->
     <header class="h-16 bg-blue-900 text-white flex justify-between items-center px-6 shadow-md z-10 flex-shrink-0">
         <div class="flex items-center gap-3">
             <i data-lucide="calculator" class="w-6 h-6 text-blue-400"></i>
@@ -23,7 +23,7 @@
     </header>
 
     <div class="flex flex-1 overflow-hidden">
-        <!-- Menu Lateral (O mesmo do Index, para manter a navegação fluida) -->
+        <!-- Menu Lateral -->
         <aside class="w-64 bg-white border-r border-stone-200 flex flex-col flex-shrink-0">
             <nav class="p-4 space-y-2">
                 <p class="px-2 text-xs font-bold text-stone-400 uppercase tracking-wider mb-2">Painéis</p>
@@ -45,47 +45,77 @@
             </nav>
         </aside>
 
-        <!-- Conteúdo Específico do Contábil -->
+        <!-- Conteúdo Principal -->
         <main class="flex-1 overflow-y-auto p-8 bg-stone-50">
             <header class="mb-8 flex justify-between items-center">
                 <div>
-                    <h2 class="text-2xl font-bold text-stone-800">Demonstrativos Financeiros</h2>
-                    <p class="text-stone-500">DRE e Balanço Patrimonial</p>
+                    <h2 class="text-2xl font-bold text-stone-800">DRE Gerencial</h2>
+                    <p class="text-stone-500">Demonstrativo de Resultado do Exercício Detalhado</p>
                 </div>
-                <button class="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg text-sm font-medium flex items-center gap-2 shadow-sm">
-                    <i data-lucide="upload" class="w-4 h-4"></i> Importar Balancete
-                </button>
             </header>
 
-            <!-- Tabela DRE -->
+            <!-- Tabela DRE Completa -->
             <div class="bg-white rounded-xl shadow-sm border border-stone-200 overflow-hidden mb-8">
                 <div class="px-6 py-4 border-b border-stone-200 bg-stone-50 flex justify-between">
-                    <h3 class="font-bold text-stone-700">DRE - Demonstrativo de Resultado</h3>
-                    <span class="text-xs font-mono text-stone-400">REF: JUN/2025</span>
+                    <h3 class="font-bold text-stone-700">Estrutura de Resultado</h3>
+                    <span class="text-xs font-mono text-stone-400">FONTE: ERP</span>
                 </div>
                 <table class="w-full text-sm text-left">
                     <thead class="text-xs text-stone-500 uppercase bg-stone-50">
                         <tr>
                             <th class="px-6 py-3">Conta</th>
                             <th class="px-6 py-3 text-right">Valor (R$)</th>
-                            <th class="px-6 py-3 text-right">AV %</th>
+                            <th class="px-6 py-3 text-right">Análise</th>
                         </tr>
                     </thead>
                     <tbody class="divide-y divide-stone-100">
-                        <tr class="hover:bg-stone-50">
-                            <td class="px-6 py-4 font-medium">Receita Bruta</td>
-                            <td class="px-6 py-4 text-right font-bold" id="val-receita">...</td>
+                        <!-- Receita -->
+                        <tr class="hover:bg-stone-50 font-bold bg-gray-50">
+                            <td class="px-6 py-4">(=) Receita Bruta Operacional</td>
+                            <td class="px-6 py-4 text-right text-blue-800" id="dre-receita">...</td>
                             <td class="px-6 py-4 text-right">100%</td>
                         </tr>
+                        <!-- Deduções -->
                         <tr class="hover:bg-stone-50 text-red-600">
-                            <td class="px-6 py-4">(-) Deduções</td>
-                            <td class="px-6 py-4 text-right">-3.599.009,10</td>
-                            <td class="px-6 py-4 text-right">9.3%</td>
+                            <td class="px-6 py-4 pl-10">(-) Deduções da Receita</td>
+                            <td class="px-6 py-4 text-right" id="dre-deducoes">...</td>
+                            <td class="px-6 py-4 text-right text-xs">Impostos s/ Venda</td>
                         </tr>
-                        <tr class="bg-emerald-50 text-emerald-800 font-bold">
-                            <td class="px-6 py-4">(=) Lucro Operacional</td>
-                            <td class="px-6 py-4 text-right" id="val-lucro">...</td>
-                            <td class="px-6 py-4 text-right">40.5%</td>
+                        <!-- Receita Líquida -->
+                        <tr class="hover:bg-stone-50 font-medium">
+                            <td class="px-6 py-4">(=) Receita Líquida</td>
+                            <td class="px-6 py-4 text-right" id="dre-receita-liq">...</td>
+                            <td class="px-6 py-4 text-right">-</td>
+                        </tr>
+                        <!-- CMV -->
+                        <tr class="hover:bg-stone-50 text-red-600">
+                            <td class="px-6 py-4 pl-10">(-) CMV / CPV</td>
+                            <td class="px-6 py-4 text-right" id="dre-cmv">...</td>
+                            <td class="px-6 py-4 text-right text-xs">Custo Mercadoria</td>
+                        </tr>
+                        <!-- Lucro Bruto -->
+                        <tr class="bg-blue-50 font-bold text-blue-900">
+                            <td class="px-6 py-4">(=) Lucro Bruto</td>
+                            <td class="px-6 py-4 text-right" id="dre-lucro-bruto">...</td>
+                            <td class="px-6 py-4 text-right">-</td>
+                        </tr>
+                        <!-- Despesas -->
+                        <tr class="hover:bg-stone-50 text-red-600">
+                            <td class="px-6 py-4 pl-10">(-) Despesas Operacionais</td>
+                            <td class="px-6 py-4 text-right" id="dre-despesas">...</td>
+                            <td class="px-6 py-4 text-right text-xs">Adm/Comercial</td>
+                        </tr>
+                         <!-- Resultado Financeiro -->
+                         <tr class="hover:bg-stone-50 text-stone-600">
+                            <td class="px-6 py-4 pl-10">(+/-) Resultado Financeiro</td>
+                            <td class="px-6 py-4 text-right" id="dre-financeiro">...</td>
+                            <td class="px-6 py-4 text-right text-xs">Juros/Multas</td>
+                        </tr>
+                        <!-- Lucro Operacional -->
+                        <tr class="bg-emerald-100 text-emerald-900 font-bold text-base">
+                            <td class="px-6 py-4">(=) Lucro Líquido Operacional</td>
+                            <td class="px-6 py-4 text-right" id="dre-lucro-op">...</td>
+                            <td class="px-6 py-4 text-right">-</td>
                         </tr>
                     </tbody>
                 </table>
@@ -93,26 +123,24 @@
 
             <div class="grid grid-cols-2 gap-6">
                 <div class="bg-white p-6 rounded-xl border border-stone-200 shadow-sm">
-                    <h3 class="font-bold text-stone-700 mb-2">Total Ativos</h3>
-                    <p class="text-3xl font-bold text-stone-800">R$ 63.804.162</p>
-                    <p class="text-xs text-stone-500 mt-2">Circulante: R$ 55.6M</p>
+                    <h3 class="font-bold text-stone-700 mb-2">Ativo Total</h3>
+                    <p class="text-3xl font-bold text-stone-800" id="bal-ativo">...</p>
+                    <div class="h-2 w-full bg-stone-100 rounded-full mt-2 overflow-hidden">
+                        <div class="h-full bg-blue-500 w-3/4"></div>
+                    </div>
                 </div>
                 <div class="bg-white p-6 rounded-xl border border-stone-200 shadow-sm">
-                    <h3 class="font-bold text-stone-700 mb-2">Passivos + PL</h3>
-                    <p class="text-3xl font-bold text-stone-800">R$ 63.804.162</p>
-                    <p class="text-xs text-stone-500 mt-2">Exigível CP: R$ 7.8M</p>
+                    <h3 class="font-bold text-stone-700 mb-2">Passivo Total</h3>
+                    <p class="text-3xl font-bold text-stone-800" id="bal-passivo">...</p>
+                    <div class="h-2 w-full bg-stone-100 rounded-full mt-2 overflow-hidden">
+                        <div class="h-full bg-red-500 w-2/4"></div>
+                    </div>
                 </div>
             </div>
         </main>
     </div>
 
-    
-
-    <!-- L'IDEA CORE SYSTEM -->
-    
-    
-
-    <!-- L'IDEA SMART LINK (Auto-Generated) -->
+    <!-- Scripts de Integração -->
     
     
 <script src="../lidea_db.js"></script><script src="../core_controller.js"></script></body>
