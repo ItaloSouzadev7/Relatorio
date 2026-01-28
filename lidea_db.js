@@ -1,6 +1,5 @@
-// ARQUIVO CENTRAL DE DADOS - SINCRO L'IDEA
-// Este arquivo é carregado por todos os módulos.
-// Edite aqui e o site todo muda.
+// BANCO DE DADOS CENTRAL
+// Este arquivo é a fonte da verdade para todos os módulos.
 
 const LIDEA_DATA = {
     "timestamp": "2025-06-25T14:30:00",
@@ -20,11 +19,11 @@ const LIDEA_DATA = {
     },
     "legal": {
         "status": "Regular",
-        "pendencias": 1
+        "pendencias": 0
     }
 };
 
-// Fallback para LocalStorage se necessário (Retrocompatibilidade)
+// Fallback para LocalStorage
 if (!localStorage.getItem('lidea_db_v1')) {
     localStorage.setItem('lidea_db_v1', JSON.stringify(LIDEA_DATA));
 }

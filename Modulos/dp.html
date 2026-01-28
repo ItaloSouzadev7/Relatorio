@@ -2,133 +2,40 @@
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>L'IDEA - Departamento Pessoal</title>
+    <title>L'IDEA - DP</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://unpkg.com/lucide@latest"></script>
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
-        body { font-family: 'Inter', sans-serif; background-color: #f5f5f4; }
-    </style>
+    <script src="../lidea_db.js"></script>
+    <style>@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap'); body { font-family: 'Inter', sans-serif; background-color: #f5f5f4; }</style>
 </head>
 <body class="text-stone-800 h-screen flex flex-col overflow-hidden">
-
-    <!-- Topbar DP (Rosa/Rose) -->
     <header class="h-16 bg-rose-900 text-white flex justify-between items-center px-6 shadow-md z-10 flex-shrink-0">
-        <div class="flex items-center gap-3">
-            <i data-lucide="users" class="w-6 h-6 text-rose-400"></i>
-            <h1 class="text-lg font-bold tracking-tight">MÓDULO PESSOAL</h1>
-        </div>
-        <a href="./index.html" class="text-xs bg-rose-800 hover:bg-rose-700 px-3 py-1 rounded transition-colors">Voltar ao Hub</a>
+        <div class="flex items-center gap-3"><i data-lucide="users" class="w-6 h-6 text-rose-400"></i><h1 class="text-lg font-bold">MÓDULO PESSOAL</h1></div>
+        <a href="../index.html" class="text-xs bg-rose-800 hover:bg-rose-700 px-3 py-1 rounded">Voltar ao Hub</a>
     </header>
-
     <div class="flex flex-1 overflow-hidden">
-        <!-- Menu Lateral -->
         <aside class="w-64 bg-white border-r border-stone-200 flex flex-col flex-shrink-0">
             <nav class="p-4 space-y-2">
-                <p class="px-2 text-xs font-bold text-stone-400 uppercase tracking-wider mb-2">Painéis</p>
-                <a href="./index.html" class="flex items-center gap-3 px-3 py-2 text-stone-600 hover:bg-stone-50 rounded-lg transition-colors">
-                    <i data-lucide="layout-dashboard" class="w-4 h-4"></i> Visão Geral
-                </a>
-                <a href="./contabil.html" class="flex items-center gap-3 px-3 py-2 text-stone-600 hover:bg-stone-50 rounded-lg transition-colors">
-                    <i data-lucide="calculator" class="w-4 h-4"></i> Contábil
-                </a>
-                <a href="./fiscal.html" class="flex items-center gap-3 px-3 py-2 text-stone-600 hover:bg-stone-50 rounded-lg transition-colors">
-                    <i data-lucide="receipt" class="w-4 h-4"></i> Fiscal
-                </a>
-                <a href="./dp.html" class="flex items-center gap-3 px-3 py-2 bg-rose-50 text-rose-700 font-medium rounded-lg">
-                    <i data-lucide="users" class="w-4 h-4"></i> Dep. Pessoal
-                </a>
-                <a href="./legal.html" class="flex items-center gap-3 px-3 py-2 text-stone-600 hover:bg-stone-50 rounded-lg transition-colors">
-                    <i data-lucide="scale" class="w-4 h-4"></i> Legalização
-                </a>
+                <p class="px-2 text-xs font-bold text-stone-400 uppercase tracking-wider mb-2">Diretório</p>
+                <a href="../index.html" class="flex items-center gap-3 px-3 py-2 text-stone-600 hover:bg-stone-50 rounded-lg"><i data-lucide="layout-dashboard" class="w-4 h-4"></i> Visão Geral</a>
+                <a href="./contabil.html" class="flex items-center gap-3 px-3 py-2 text-stone-600 hover:bg-stone-50 rounded-lg"><i data-lucide="calculator" class="w-4 h-4"></i> Contábil</a>
+                <a href="./fiscal.html" class="flex items-center gap-3 px-3 py-2 text-stone-600 hover:bg-stone-50 rounded-lg"><i data-lucide="receipt" class="w-4 h-4"></i> Fiscal</a>
+                <a href="./dp.html" class="flex items-center gap-3 px-3 py-2 bg-rose-50 text-rose-700 font-medium rounded-lg"><i data-lucide="users" class="w-4 h-4"></i> Dep. Pessoal</a>
+                <a href="./legal.html" class="flex items-center gap-3 px-3 py-2 text-stone-600 hover:bg-stone-50 rounded-lg"><i data-lucide="scale" class="w-4 h-4"></i> Legalização</a>
             </nav>
         </aside>
-
-        <!-- Conteúdo DP -->
         <main class="flex-1 overflow-y-auto p-8 bg-stone-50">
-            <header class="mb-8">
-                <h2 class="text-2xl font-bold text-stone-800">Recursos Humanos</h2>
-                <p class="text-stone-500">Gestão de Colaboradores e Benefícios</p>
-            </header>
-
-            <div class="grid grid-cols-1 md:grid-cols-4 gap-6 mb-8">
+            <div class="grid grid-cols-2 gap-6">
                 <div class="bg-white p-6 rounded-xl border border-stone-200 shadow-sm flex items-center gap-4">
                     <div class="p-3 bg-rose-100 rounded-full text-rose-600"><i data-lucide="users" class="w-6 h-6"></i></div>
-                    <div>
-                        <p class="text-xs text-stone-500 uppercase font-bold">Headcount</p>
-                        <p class="text-2xl font-bold text-stone-800" id="val-headcount">...</p>
-                    </div>
+                    <div><p class="text-xs font-bold uppercase">Headcount</p><p class="text-2xl font-bold" id="val-headcount">...</p></div>
                 </div>
-                <div class="bg-white p-6 rounded-xl border border-stone-200 shadow-sm flex items-center gap-4">
-                    <div class="p-3 bg-emerald-100 rounded-full text-emerald-600"><i data-lucide="user-plus" class="w-6 h-6"></i></div>
-                    <div>
-                        <p class="text-xs text-stone-500 uppercase font-bold">Admissões</p>
-                        <p class="text-2xl font-bold text-stone-800">4</p>
-                    </div>
-                </div>
-                <div class="bg-white p-6 rounded-xl border border-stone-200 shadow-sm flex items-center gap-4">
-                    <div class="p-3 bg-red-100 rounded-full text-red-600"><i data-lucide="user-minus" class="w-6 h-6"></i></div>
-                    <div>
-                        <p class="text-xs text-stone-500 uppercase font-bold">Desligamentos</p>
-                        <p class="text-2xl font-bold text-stone-800">1</p>
-                    </div>
-                </div>
-                <div class="bg-white p-6 rounded-xl border border-stone-200 shadow-sm flex items-center gap-4">
-                    <div class="p-3 bg-blue-100 rounded-full text-blue-600"><i data-lucide="umbrella" class="w-6 h-6"></i></div>
-                    <div>
-                        <p class="text-xs text-stone-500 uppercase font-bold">Em Férias</p>
-                        <p class="text-2xl font-bold text-stone-800">12</p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="bg-white rounded-xl shadow-sm border border-stone-200 overflow-hidden">
-                <div class="px-6 py-4 border-b border-stone-200 bg-stone-50">
-                    <h3 class="font-bold text-stone-700">Custo de Folha de Pagamento</h3>
-                </div>
-                <table class="w-full text-sm text-left">
-                    <thead class="text-xs text-stone-500 uppercase bg-stone-50">
-                        <tr>
-                            <th class="px-6 py-3">Descrição</th>
-                            <th class="px-6 py-3 text-right">Valor Mensal</th>
-                            <th class="px-6 py-3 text-right">Status</th>
-                        </tr>
-                    </thead>
-                    <tbody class="divide-y divide-stone-100">
-                        <tr class="hover:bg-stone-50">
-                            <td class="px-6 py-4 font-medium">Salários Líquidos</td>
-                            <td class="px-6 py-4 text-right">R$ 1.850.200,00</td>
-                            <td class="px-6 py-4 text-right"><span class="text-xs bg-green-100 text-green-700 px-2 py-1 rounded font-bold">PAGO</span></td>
-                        </tr>
-                        <tr class="hover:bg-stone-50">
-                            <td class="px-6 py-4 font-medium">FGTS</td>
-                            <td class="px-6 py-4 text-right">R$ 148.016,00</td>
-                            <td class="px-6 py-4 text-right"><span class="text-xs bg-amber-100 text-amber-700 px-2 py-1 rounded font-bold">AGUARDANDO</span></td>
-                        </tr>
-                        <tr class="hover:bg-stone-50">
-                            <td class="px-6 py-4 font-medium">INSS (Patronal + RAT)</td>
-                            <td class="px-6 py-4 text-right">R$ 518.056,00</td>
-                            <td class="px-6 py-4 text-right"><span class="text-xs bg-amber-100 text-amber-700 px-2 py-1 rounded font-bold">AGUARDANDO</span></td>
-                        </tr>
-                         <tr class="hover:bg-stone-50 bg-stone-50 font-bold">
-                            <td class="px-6 py-4">Custo Total Folha</td>
-                            <td class="px-6 py-4 text-right">R$ 3.102.232,00</td>
-                            <td class="px-6 py-4 text-right">-</td>
-                        </tr>
-                    </tbody>
-                </table>
             </div>
         </main>
     </div>
-
     <script>
-        if (!localStorage.getItem('lidea_db_v1')) {
-            const defaultData = { contabil: { lucro: 15637292.45, receita: 38621924.56 }, fiscal: { impostos: 3438234.30 }, dp: { headcount: 142 }, legal: { status: "Regular" } };
-            localStorage.setItem('lidea_db_v1', JSON.stringify(defaultData));
-        }
-        const db = JSON.parse(localStorage.getItem('lidea_db_v1'));
-        document.getElementById('val-headcount').innerText = db.dp.headcount;
+        const db = (typeof LIDEA_DATA !== 'undefined') ? LIDEA_DATA : JSON.parse(localStorage.getItem('lidea_db_v1'));
+        if (db) document.getElementById('val-headcount').innerText = db.dp.headcount;
         lucide.createIcons();
     </script>
 </body>
