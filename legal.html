@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>L'IDEA - Legalização</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+        body { font-family: 'Inter', sans-serif; background-color: #f5f5f4; }
+    </style>
+</head>
+<body class="text-stone-800 h-screen flex flex-col overflow-hidden">
+
+    <!-- Topbar Legal (Roxo) -->
+    <header class="h-16 bg-purple-900 text-white flex justify-between items-center px-6 shadow-md z-10 flex-shrink-0">
+        <div class="flex items-center gap-3">
+            <i data-lucide="scale" class="w-6 h-6 text-purple-400"></i>
+            <h1 class="text-lg font-bold tracking-tight">MÓDULO LEGAL</h1>
+        </div>
+        <a href="./index.html" class="text-xs bg-purple-800 hover:bg-purple-700 px-3 py-1 rounded transition-colors">Voltar ao Hub</a>
+    </header>
+
+    <div class="flex flex-1 overflow-hidden">
+        <!-- Menu Lateral -->
+        <aside class="w-64 bg-white border-r border-stone-200 flex flex-col flex-shrink-0">
+            <nav class="p-4 space-y-2">
+                <p class="px-2 text-xs font-bold text-stone-400 uppercase tracking-wider mb-2">Painéis</p>
+                <a href="./index.html" class="flex items-center gap-3 px-3 py-2 text-stone-600 hover:bg-stone-50 rounded-lg transition-colors">
+                    <i data-lucide="layout-dashboard" class="w-4 h-4"></i> Visão Geral
+                </a>
+                <a href="./contabil.html" class="flex items-center gap-3 px-3 py-2 text-stone-600 hover:bg-stone-50 rounded-lg transition-colors">
+                    <i data-lucide="calculator" class="w-4 h-4"></i> Contábil
+                </a>
+                <a href="./fiscal.html" class="flex items-center gap-3 px-3 py-2 text-stone-600 hover:bg-stone-50 rounded-lg transition-colors">
+                    <i data-lucide="receipt" class="w-4 h-4"></i> Fiscal
+                </a>
+                <a href="./dp.html" class="flex items-center gap-3 px-3 py-2 text-stone-600 hover:bg-stone-50 rounded-lg transition-colors">
+                    <i data-lucide="users" class="w-4 h-4"></i> Dep. Pessoal
+                </a>
+                <a href="./legal.html" class="flex items-center gap-3 px-3 py-2 bg-purple-50 text-purple-700 font-medium rounded-lg">
+                    <i data-lucide="scale" class="w-4 h-4"></i> Legalização
+                </a>
+            </nav>
+        </aside>
+
+        <!-- Conteúdo Legal -->
+        <main class="flex-1 overflow-y-auto p-8 bg-stone-50">
+            <header class="mb-8 flex justify-between">
+                <div>
+                    <h2 class="text-2xl font-bold text-stone-800">Compliance & Legalização</h2>
+                    <p class="text-stone-500">Monitoramento de Certidões e Alvarás</p>
+                </div>
+                <div class="flex items-center gap-2 bg-white px-4 py-2 rounded-lg border border-stone-200 shadow-sm">
+                    <span class="text-sm font-bold text-stone-600">Status Geral:</span>
+                    <span class="text-sm font-bold text-emerald-600 flex items-center gap-1" id="val-status">
+                        <div class="w-2 h-2 rounded-full bg-emerald-500"></div> Regular
+                    </span>
+                </div>
+            </header>
+
+            <div class="bg-white rounded-xl shadow-sm border border-stone-200 p-6 mb-6">
+                <h3 class="font-bold text-stone-700 mb-4 flex items-center gap-2">
+                    <i data-lucide="file-check" class="w-5 h-5 text-purple-500"></i>
+                    Painel de CNDs (Certidões Negativas)
+                </h3>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+                    <!-- Cards de CND -->
+                    <div class="p-4 rounded-lg border border-stone-200 bg-stone-50 flex flex-col justify-between h-32">
+                        <div class="flex justify-between items-start">
+                            <span class="font-bold text-sm text-stone-700">Receita Federal</span>
+                            <i data-lucide="check-circle" class="w-4 h-4 text-green-500"></i>
+                        </div>
+                        <div>
+                            <p class="text-xs text-stone-500">Vencimento</p>
+                            <p class="font-mono text-sm font-bold text-stone-800">15/08/2025</p>
+                        </div>
+                    </div>
+                    
+                    <div class="p-4 rounded-lg border border-stone-200 bg-stone-50 flex flex-col justify-between h-32">
+                        <div class="flex justify-between items-start">
+                            <span class="font-bold text-sm text-stone-700">FGTS</span>
+                            <i data-lucide="check-circle" class="w-4 h-4 text-green-500"></i>
+                        </div>
+                        <div>
+                            <p class="text-xs text-stone-500">Vencimento</p>
+                            <p class="font-mono text-sm font-bold text-stone-800">02/07/2025</p>
+                        </div>
+                    </div>
+
+                    <!-- Item Crítico -->
+                    <div class="p-4 rounded-lg border border-red-200 bg-red-50 flex flex-col justify-between h-32 relative overflow-hidden">
+                        <div class="absolute right-0 top-0 p-1 bg-red-200 rounded-bl text-[10px] font-bold text-red-800">AÇÃO NECESSÁRIA</div>
+                        <div class="flex justify-between items-start">
+                            <span class="font-bold text-sm text-red-800">Sefaz Estadual</span>
+                            <i data-lucide="alert-triangle" class="w-4 h-4 text-red-500"></i>
+                        </div>
+                        <div>
+                            <p class="text-xs text-red-600">Vencimento</p>
+                            <p class="font-mono text-sm font-bold text-red-800">28/06/2025</p>
+                        </div>
+                    </div>
+
+                    <div class="p-4 rounded-lg border border-stone-200 bg-stone-50 flex flex-col justify-between h-32">
+                        <div class="flex justify-between items-start">
+                            <span class="font-bold text-sm text-stone-700">Prefeitura</span>
+                            <i data-lucide="check-circle" class="w-4 h-4 text-green-500"></i>
+                        </div>
+                        <div>
+                            <p class="text-xs text-stone-500">Vencimento</p>
+                            <p class="font-mono text-sm font-bold text-stone-800">10/09/2025</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Tabela de Processos -->
+            <div class="bg-white rounded-xl shadow-sm border border-stone-200 overflow-hidden">
+                <div class="px-6 py-4 border-b border-stone-200 bg-stone-50">
+                    <h3 class="font-bold text-stone-700">Processos Administrativos em Aberto</h3>
+                </div>
+                <table class="w-full text-sm text-left">
+                    <thead class="text-xs text-stone-500 uppercase bg-stone-50">
+                        <tr>
+                            <th class="px-6 py-3">ID</th>
+                            <th class="px-6 py-3">Descrição</th>
+                            <th class="px-6 py-3">Responsável</th>
+                            <th class="px-6 py-3 text-right">Progresso</th>
+                        </tr>
+                    </thead>
+                    <tbody class="divide-y divide-stone-100">
+                        <tr class="hover:bg-stone-50">
+                            <td class="px-6 py-4 font-mono text-xs">PROC-001</td>
+                            <td class="px-6 py-4 font-medium">Renovação Alvará Bombeiros</td>
+                            <td class="px-6 py-4">Eng. Carlos</td>
+                            <td class="px-6 py-4 text-right">
+                                <div class="w-full bg-stone-200 rounded-full h-2">
+                                    <div class="bg-blue-600 h-2 rounded-full" style="width: 80%"></div>
+                                </div>
+                                <span class="text-xs text-stone-500">80%</span>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </main>
+    </div>
+
+    <script>
+        if (!localStorage.getItem('lidea_db_v1')) {
+             const defaultData = { contabil: { lucro: 15637292.45, receita: 38621924.56 }, fiscal: { impostos: 3438234.30 }, dp: { headcount: 142 }, legal: { status: "Regular" } };
+            localStorage.setItem('lidea_db_v1', JSON.stringify(defaultData));
+        }
+        const db = JSON.parse(localStorage.getItem('lidea_db_v1'));
+        
+        // Atualiza status se houver dado no banco, senão mantém o padrão do HTML
+        if(db.legal && db.legal.status) {
+            document.getElementById('val-status').innerHTML = `<div class="w-2 h-2 rounded-full bg-emerald-500"></div> ${db.legal.status}`;
+        }
+
+        lucide.createIcons();
+    </script>
+</body>
+</html>
