@@ -1,7 +1,7 @@
 const LIDEA_DATA = {
     "meta_info": {
         "periodo": "Smart Sync",
-        "atualizacao": "28/01/2026 15:18"
+        "atualizacao": "28/01/2026 15:21"
     },
     "contabil": {
         "resumo": {
