@@ -125,33 +125,10 @@
     </div>
 
     <!-- SCRIPT DE INTEGRAÇÃO (Simulado aqui no final) -->
-    <script>
-        // 1. Definição da "Verdade Única" (Dados)
-        const defaultData = {
-            contabil: { lucro: 15637292.45, receita: 38621924.56 },
-            fiscal: { impostos: 3438234.30 },
-            dp: { headcount: 142 },
-            legal: { status: "Regular" }
-        };
+    
 
-        // 2. Inicialização do LocalStorage (Comunicação entre abas)
-        // Se não houver dados salvos, salva os padrão. Se houver, usa os salvos.
-        if (!localStorage.getItem('lidea_db_v1')) {
-            localStorage.setItem('lidea_db_v1', JSON.stringify(defaultData));
-        }
-
-        // 3. Ler dados
-        const db = JSON.parse(localStorage.getItem('lidea_db_v1'));
-
-        // 4. Renderizar na tela
-        function formatMoney(val) { return val.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL', maximumFractionDigits: 0 }); }
-        
-        document.getElementById('kpi-lucro').innerText = formatMoney(db.contabil.lucro);
-        document.getElementById('kpi-impostos').innerText = formatMoney(db.fiscal.impostos);
-        document.getElementById('kpi-headcount').innerText = db.dp.headcount;
-
-        // Inicializa ícones
-        lucide.createIcons();
-    </script>
+    <!-- L'IDEA CORE SYSTEM -->
+    <script src="./lidea_db.js"></script>
+    <script src="./core_controller.js"></script>
 </body>
 </html>

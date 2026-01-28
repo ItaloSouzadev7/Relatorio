@@ -147,19 +147,10 @@
         </main>
     </div>
 
-    <script>
-        if (!localStorage.getItem('lidea_db_v1')) {
-             const defaultData = { contabil: { lucro: 15637292.45, receita: 38621924.56 }, fiscal: { impostos: 3438234.30 }, dp: { headcount: 142 }, legal: { status: "Regular" } };
-            localStorage.setItem('lidea_db_v1', JSON.stringify(defaultData));
-        }
-        const db = JSON.parse(localStorage.getItem('lidea_db_v1'));
-        
-        // Atualiza status se houver dado no banco, senão mantém o padrão do HTML
-        if(db.legal && db.legal.status) {
-            document.getElementById('val-status').innerHTML = `<div class="w-2 h-2 rounded-full bg-emerald-500"></div> ${db.legal.status}`;
-        }
+    
 
-        lucide.createIcons();
-    </script>
+    <!-- L'IDEA CORE SYSTEM -->
+    <script src="../lidea_db.js"></script>
+    <script src="../core_controller.js"></script>
 </body>
 </html>
